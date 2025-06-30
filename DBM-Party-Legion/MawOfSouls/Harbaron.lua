@@ -108,7 +108,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 194325 then
 		if self:IsHard() then
-			timerFragmentCD:Start(37.5)
+			timerFragmentCD:Start(30) --Timer corregido para mitico
 		else
 			timerFragmentCD:Start()
 		end
