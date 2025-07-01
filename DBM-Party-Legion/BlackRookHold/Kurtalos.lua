@@ -48,7 +48,7 @@ local timerUnerringShearCD			= mod:NewCDTimer(12, 198635, nil, "Tank", nil, 5, n
 local timerGuileCD					= mod:NewCDCountTimer(85, 199193, nil, nil, nil, 6, nil, DBM_CORE_DEADLY_ICON..DBM_CORE_MYTHIC_ICON) --Хитроумие повелителя ужаса
 local timerGuile					= mod:NewBuffFadesTimer(20, 199193, nil, nil, nil, 6, nil, DBM_CORE_MYTHIC_ICON) --Хитроумие повелителя ужаса
 local timerCloudCD					= mod:NewCDTimer(35, 199143, nil, nil, nil, 3, nil, DBM_CORE_MAGIC_ICON) --Гипнотическое облако
-local timerSwarmCD					= mod:NewCDTimer(19.8, 201733, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON) --Жалящий рой
+local timerSwarmCD					= mod:NewCDTimer(15, 201733, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON) --Se cambia a 15 segundos, y son los Stinging Swarm posteriores al primero despues de que el boss use Dreadlord's Guille 
 local timerShadowBoltVolleyCD		= mod:NewCDTimer(8, 202019, nil, nil, nil, 2, nil, DBM_CORE_DEADLY_ICON) --Залп стрел Тьмы
 local timerLegacyRavencrestCD		= mod:NewCDTimer(24.5, 199368, nil, nil, nil, 7) --Наследие Гребня Ворона
 local timerWhirlingBladeCD			= mod:NewCDTimer(25.5, 198641, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON) --Крутящийся клинок
@@ -215,7 +215,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	--	specWarnGuileEnded:Play("safenow")
 		timerCloudCD:Start(3)
 		if not self:IsNormal() then
-			timerSwarmCD:Start(10.5)
+			timerSwarmCD:Start(3.2) --Se cambia a 3.2 segundos, y es el Stinging Swarm que ocurre justo despues de que el boss use Dreadlord's Guile.
 		end
 	elseif spellId == 201733 then --Жалящий рой
 		if self.Options.SetIconOnSwarm then
